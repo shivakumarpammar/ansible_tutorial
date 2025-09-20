@@ -1,0 +1,6 @@
+- name: Ensure Apache2 is installed and up to date
+  apt:
+    name: apache2
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"

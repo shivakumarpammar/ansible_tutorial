@@ -1,0 +1,14 @@
+- name: Download Terraform zip
+  get_url:
+    url: https://releases.hashicorp.com/terraform/1.13.3/terraform_1.13.3_linux_386.zip
+    dest: /tmp/terraform.zip
+    mode: '0644'
+
+- name: Extract Terraform binary
+  unarchive:
+    src: /tmp/terraform.zip
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: '0755'
+    owner: root
+    group: root
