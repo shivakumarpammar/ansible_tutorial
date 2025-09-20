@@ -9,6 +9,9 @@
      state: latest
      update_cache: yes
 
+
+
+
   - name: copy default html file to webserver
     tags: apache,apache2,httpd
     copy:
@@ -18,7 +21,12 @@
       group: root
       mode: 0644
 
-
+  - name:  Restart Apache Service
+    tags: apache,apache2,Ubuntu
+    service:
+      name: apache2
+      state: restarted
+      enabled: yes
 
 
 
@@ -42,3 +50,42 @@
     apt:
       name: mariadb-server
       state: latest
+
+
+
+
+
+
+- hosts: workstations
+  become: true
+  tasks:
+
+
+    - name:  install unzip
+      package:
+        name: unzip
+
+
+    - name: install terraform
+      unarchive:
+        src: https://releases.hashicorp.com/terraform/1.13.3/terraform_1.13.3_linux_386.zip
+        dest: /usr/local/bin
+        remote_src: yes
+        mode: 0755
+        owner: root
+        group: root
+
+
+
+
+- hosts: all
+  become: true
+  tasks:
+
+    - name: add ssh key for simone
+      tags: always
+      authorized_key:
+        user: simone
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILl0tcHGJHgRKEOmpuaoSL8DPTNeuVIF0a9O7LX4Easx ansible"
+
+
