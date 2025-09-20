@@ -1,0 +1,41 @@
+---
+
+
+
+
+- hosts: all
+  become: true
+  tasks:
+
+
+    - name: install updates (Ubuntu)
+      apt:
+        update_cache: yes
+      changed_when: false
+      when: ansible_distribution == "Ubuntu"
+
+
+
+
+
+    - name: create simone user
+      tags: always
+      user:
+        name: simone
+        groups: root
+
+    - name: add ssh key for simone
+      tags: always
+      authorized_key:
+        user: simone
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILl0tcHGJHgRKEOmpuaoSL8DPTNeuVIF0a9O7LX4Easx ansible"
+
+
+    - name: add sudoers file  for simone
+      tags: always
+      copy:
+        src: /home/c1/ansible_tutorial/files/sudoer_simone
+        dest: /etc/sudoers.d/simone
+        owner: root
+        group: root
+        mode:  0440
