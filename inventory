@@ -10,3 +10,6 @@
 
 [file_servers]
 192.168.153.133
+
+[workstations]
+192.168.153.134
