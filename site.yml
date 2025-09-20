@@ -1,5 +1,4 @@
 ---
-
 - hosts: web_servers
   become: true
   tasks:
@@ -10,22 +9,36 @@
      state: latest
      update_cache: yes
 
+  - name: copy default html file to webserver
+    tags: apache,apache2,httpd
+    copy:
+      src: /home/c1/ansible_tutorial/files/defualt_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
+
+
+
+
+
 - hosts: file_servers
   become: true
   tasks:
 
-
-  - name: install samba package 
+  - name: install samba package
     package:
       name: samba
       state: latest
 
+
+
+
+
 - hosts: db_servers
   become: true
   tasks:
-
   - name: Install mariadb package
     apt:
       name: mariadb-server
-      name: mariadb-client
       state: latest
