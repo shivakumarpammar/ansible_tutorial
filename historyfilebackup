@@ -67,3 +67,112 @@
    67  ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
    68  git status
    69  history >>historyfilebackup
+    1  ssh s1@192.168.153.131
+    2  ssh s1@192.168.153.132
+    3  ssh s2@192.168.153.132
+    4  ssh s3@192.168.153.133
+    5  clear
+    6  ll
+    7  ls -la .ssh
+    8  ssh-keygen -t ed25519 -C "client Default"
+    9  ls -la .ssh
+   10  cat .ssh/id_ed25519.pub 
+   11  cat .ssh/id_ed25519
+   12  ssh-copy-id -i ~/.ssh/id_ed25519.pub 192.168.153.131
+   13  ssh-copy-id -i ~/.ssh/id_ed25519.pub 192.168.153.134
+   14  ssh-copy-id -i ~/.ssh/id_ed25519.pub 192.168.153.131
+   15  ssh s1@192.168.153.131
+   16  ssh 192.168.153.131
+   17  ssh-copy-id -i ~/.ssh/id_ed25519.pub 192.168.153.131
+   18  ssh-copy-id -i ~/.ssh/id_ed25519.pub 192.168.153.132
+   19  ssh-copy-id -i ~/.ssh/id_ed25519.pub 192.168.153.133
+   20  ssh 192.168.153.131
+   21  clear
+   22  ssh-keygen -t ed25519 -C "ansible"
+   23  ls -ls .ssh
+   24  ssh-copy-id -i ~/.ssh/ansible.pub 192.168.153.131
+   25  ssh-copy-id -i ~/.ssh/ansible.pub 192.168.153.132
+   26  ssh-copy-id -i ~/.ssh/ansible.pub 192.168.153.133
+   27  sudo apt update
+   28  clear
+   29  sudo apt-get  install ansible
+   30  ll
+   31  cd ansible_tutorial/
+   32  ll
+   33  clear
+   34  nano inventory
+   35  cat inventory 
+   36  nano inventory
+   37  cat inventory 
+   38  git add
+   39  git add inventory 
+   40  git commit -m "Server IP inventory"
+   41  git status
+   42  git push
+   43  git status
+   44  clear
+   45  ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+   46  nano ansible.cfg
+   47  ls
+   48  ls /etc/ansible
+   49  clear
+   50  ansible all -m ping
+   51  ansible all -list-hosts
+   52  ansible all --list-hosts
+   53  ansible all -m gather_facts
+   54  ansible all -m gather_facts --limit  192.168.153.131
+   55  git status 
+   56  git add ansible.cfg 
+   57  git commit -m "1st version of config file ansible"
+   58  git push
+   59  ansible all -m apt -a update_cache=true
+   60  ansible all -m apt -a update_cache=true --become --ask-become-pass
+   61  ansible all -m apt -a name=vim-nox --become --ask-become-pass
+   62  ansible all -m apt -a name=tmux --become --ask-become-pass
+   63  ansible all -m apt -a name=snapd --become --ask-become-pass
+   64  ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
+   65  ansible all -m apt -a "name=powermgmt-base state=latest" --become --ask-become-pass
+   66  ansible 192.168.153.131 -m apt -a "name=powermgmt-base state=latest" --become --ask-become-pass
+   67  ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
+   68  git status
+   69  history >>historyfilebackup
+   70  cat historyfilebackup 
+   71  git add historyfilebackup 
+   72  git commit -m "command historyfile"
+   73  git status 
+   74  git push 
+   75  nano install_apache.yml
+   76  ansible-playbook --ask-become-ask install_apache.yml 
+   77  ansible-playbook --ask-become-pass install_apache.yml
+   78  nano install_apache.yml 
+   79  ansible-playbook --ask-become-pass install_apache.yml
+   80  nano install_apache.yml 
+   81  ansible-playbook --ask-become-pass install_apache.yml
+   82  nano install_apache.yml 
+   83  ansible-playbook --ask-become-pass install_apache.yml
+   84  nano install_apache.yml 
+   85  ansible-playbook --ask-become-pass install_apache.yml
+   86  nano install_apache.yml 
+   87  ansible-playbook --ask-become-pass install_apache.yml
+   88  nano install_apache.yml 
+   89  ansible-playbook --ask-become-pass install_apache.yml
+   90  nano install_apache.yml 
+   91  ansible-playbook --ask-become-pass install_apache.yml
+   92  nano install_apache.yml 
+   93  ansible-playbook --ask-become-pass install_apache.yml
+   94  nano install_apache.yml 
+   95  ansible-playbook --ask-become-pass install_apache.yml
+   96  nano install_apache.yml 
+   97  ansible-playbook --ask-become-pass install_apache.yml
+   98  cp install_apache.yml remove_apache.yml
+   99  nano remove_apache.yml 
+  100  ansible-playbook --ask-become-pass remove_apache.yml 
+  101  ansible-playbook --ask-become-pass install_apache.yml
+  102  git status
+  103  git add *
+  104  git status
+  105  git commit -m "Package Install and Uninstaller Playbooks"
+  106  git puch
+  107  git push
+  108  ll
+  109  history >>historyfilebackup 
